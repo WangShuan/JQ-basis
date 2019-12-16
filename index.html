@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQuery入門</title>
+    <style>
+        h3 {
+            color: red;
+        }
+
+        p {
+            width: 500px;
+            height: auto;
+            background-color: floralwhite;
+            line-height: 20px;
+            padding: 10px 20px;
+            border: 1px solid darkgoldenrod;
+        }
+
+        #box {
+            height: 210px;
+            width: 130px;
+            border: 1px solid darkblue;
+            padding: 10px;
+        }
+
+        #box>div {
+            height: 50px;
+            width: 100px;
+            margin: 5px auto;
+            background-color: lightsteelblue;
+            display: none;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        #test{
+            width: 100px;
+            height: auto;
+            padding: 10px;
+            margin-top: 15px;
+        }
+
+        #test>ul{
+            padding: 0;
+            margin: 0;
+        }
+
+        #test li{
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        u {
+            background-color: lightyellow;
+        }
+
+        .over,
+        .enter {
+            width: 200px;
+            height: 50px;
+            background-color: lightgrey;
+        }
+
+        .over>h2,
+        .enter>h2 {
+            background-color: black;
+            color: white;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box2 {
+            height: 160px;
+                border: 1px solid darkblue;
+                width: 360px;
+                margin: 15px 0;
+
+        }
+
+        #box2>ul {
+            height: 30px;
+            background-color: gainsboro;
+            line-height: 30px;
+            width: 340px;
+            margin-left: 10px;
+            padding: 0;
+        }
+
+        #box2>ul>li {
+            float: left;
+            position: relative;
+            width: 100px;
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        #box2 a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #box2 li {
+            height: 30px;
+            line-height: 30px;
+            background-color: gainsboro;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        #box2 li ul {
+            position: absolute;
+            top: 30px;
+            display: none;
+            padding: 0;
+        }
+
+        #box2>ul>li>ul>li {
+            margin: 2px;
+        }
+
+        #box3 {
+            width: 336px;
+            height: 210px;
+            border: 5px solid gainsboro;
+            background-color: gainsboro;
+        }
+
+        #box3>div {
+            float: left;
+            width: 100px;
+            border: 1px solid gainsboro;
+            padding: 5px;
+        }
+
+        #box3>div>img {
+            width: 100px;
+        }
+
+        #box4>ul {
+            border: 1px solid firebrick;
+            width: 180px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        #box4 div {
+            height: 100px;
+            background-color: floralwhite;
+            color: firebrick;
+            /* line-height: 100px; */
+            display: none;
+        }
+
+        #box4 li {
+            background-color: rgb(7, 7, 7);
+            color: floralwhite;
+            border: 5px solid firebrick;
+            border-top: 0;
+        }
+
+        #box4>ul:first-child {
+            border-top: 5px solid firebrick !important;
+        }
+
+        .title {
+            display: block;
+            cursor: pointer;
+        }
+
+        .wrapper {
+            width: 298px;
+            height: 248px;
+            border: 1px solid black;
+            overflow: hidden;
+            font-size: 12px;
+        }
+
+        #left,
+        #center,
+        #right {
+            float: left;
+            padding: 0;
+            margin: 0;
+        }
+
+        #left li,
+        #right li {
+            background-color: black;
+        }
+
+        #left li a,
+        #right li a {
+            display: block;
+            width: 48px;
+            height: 27px;
+            border-bottom: 1px solid black;
+            line-height: 27px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        #left li a:hover,
+        #right li a:hover {
+            background-color: firebrick;
+        }
+
+        #center {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+    </style>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#bt1").click(function () {
+                $("#box>div").show()
+            })
+
+            $("#bt2").click(function () {
+                $("#box>div").text("我是內容")
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h3>JQuery 怎麼使用</h3>
+    1. 引入 JQuery 文件<br>
+    2. 寫入口函數(類似於 JS 中的 window.onload) <br><br>
+    <u>//注意： JQuery 是文檔加載完成 JS 則是包含圖片檔案都加載完成</u><br><br>
+    標準寫法為： <br>
+    <p style="width: 240px;">
+        $(document).ready(function(){ <br>
+        要執行的代碼<br>
+        })
+    </p>
+    簡寫為：<br>
+    <p style="width: 240px;">
+        $(function(){ <br>
+        要執行的代碼<br>
+        })
+    </p>
+
+    <h3>JQuery 簡單小案例：</h3>
+    有兩個按鈕 點擊 bt1 顯示三個 div <br>
+    點擊 bt2 給三個 div 添加內容。<br><br>
+    <u>//JQuery 中有隱式迭代：JQuery 會自動遍歷 不需要再寫for循環。<br>
+        //在 JQuery 中 註冊事件不會像 JS 一樣被覆蓋。<br>
+        // JQuery 中沒有兼容性問題。<br>
+        //註冊事件寫法為把 JS 事件的 on 去掉，然後傳入函數。
+    </u><br><br>
+    <div id="box">
+        <input type="button" value="SHOW" id="bt1">
+        <input type="button" value="ADD TEXT" id="bt2"><br><br>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <h3>JQuery 版本</h3>
+    JQuery 有三種版本 1點幾版本/2點幾版本/3點幾版本<br>
+    通常下載到的 JQuery 文件會有兩個 <br>
+    一個是帶有 .min 的檔案，一個是沒有 .min 的檔案<br>
+    .min 的檔案是壓縮版 裡面沒有換行和註釋 檔案小很多<br><br>
+    <u>//學習與開發過程使用沒有 .min 的檔案</u>
+    <p>1.XX--唯一兼容IE瀏覽器的版本 已被放棄更新。<br>
+        2.XX--不兼容IE瀏覽器的版本 與1.XX相對應 已被放棄更新。<br>
+        3.XX--決定放棄IE後另外開闢的不兼容IE的版本 最新且持續更新中。</p>
+    
+
+    <h3>JQuery 對象</h3>
+    JQuery對象是一個偽數組 <br>
+    裡面含有許多DOM對象以及JQuery的方法<br>
+    但是一般情況下JS對象與JQuery對象是無法互相調用的<br><br>
+    <u>//若JS對象想調用JQuery對象的方法 則必須把它轉為JQuery對象，如下：</u>
+    <p style="width: 430px;">
+        * 1. 獲取DOM對象 oDiv<br>
+        var oDiv = document.getElementsByTagsName('div')[0]<br>
+        * 2. 用美元符把DOM對象包起來<br>
+        $(oDiv)
+    </p><br>
+    <u>//若JQuery對象想調用JS的方法 則必須用數組獲取元素的方式取出，如下：</u>
+    <p style="width: 430px;">
+        * 1. 獲取JQuery對象<br>
+        var $Box = $("#box")<br>
+        * 2. 數組方式獲取下標元素 (同JQuery中的get方法)<br>
+        $Box[0].style.color = 'red'<br>
+        $Box.get(1).style.color = 'teal'
+    </p>
+
+    <h3>區分對象小案例：隔行變色</h3>
+    由此案例我們可以更清楚的了解JQuery對象調用JS方法的概念
+    <div id="test">
+        <ul>
+            <li>我是1</li>
+            <li>我是2</li>
+            <li>我是3</li>
+            <li>我是4</li>
+            <li>我是5</li>
+            <li>我是6</li>
+        </ul>
+    </div>
+    <script>
+        // 這獲取的是DOM對象
+        // var aLi = document.getElementsByTagName('li')
+        // 這獲取的是JQuery對象
+        var aLi = $('#test li')
+
+        // 在此案例中JQuery對象剛好被轉成DOM對象 使用JS方法
+        for (i = 0; i < aLi.length; i++) {
+            if (i % 2 == 0) {
+                aLi[i].style.color = 'teal'
+            } else {
+                aLi[i].style.color = 'blue'
+            }
+        }
+    </script>
+
+    <h3>mouseover vs mouseenter(打開console.log看觸發次數)</h3>
+    前者是經過就觸發 包括經過子元素也觸發 經過別人又回到本身也觸發<br>
+    後者是進入後只要沒離開就只觸發一次 就算在裡面又經過很多兒子也不管<br><br>
+    <u>
+        //且mouseenter是JQuery中才有的 <br>
+        //js中雖然有mouseenter 但是是只給IE使用的 有兼容性問題
+    </u>
+    <div class="over">
+        <h2>我是over的h2</h2>
+    </div>
+    <div class="enter">
+        <h2>我是enter的h2</h2>
+    </div>
+
+    <script>
+        $(function () {
+            $(".over").mouseover(function () {
+                console.log('overrrrr')
+            })
+
+            $(".enter").mouseenter(function () {
+                console.log('enterrrr')
+            })
+        })
+    </script>
+
+    <h3>篩選選擇器案例：下拉菜單</h3>
+    鼠標移入li就顯示li下的ul列表<br><br>
+    <u>//獲取li下一層的子元素ul的方法 > $('li').children('ul')</u>
+    <div id="box2">
+        <ul>
+            <li>
+                <a href="#">一級菜單1</a>
+                <ul>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">一級菜單2</a>
+                <ul>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">一級菜單3</a>
+                <ul>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                    <li><a href="#">二級菜單</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            $('#box2>ul>li').mouseenter(function () {
+                $(this).children('ul').show()
+            })
+            $('#box2>ul>li').mouseleave(function () {
+                $(this).children('ul').hide()
+            })
+        })
+    </script>
+
+    <h3>篩選選擇器案例：突出顯示</h3>
+    鼠標移入就讓當前圖片高亮 其他圖片變暗<br>
+    鼠標移出就恢復所有圖片高亮<br><br>
+    <u>
+        //獲取其他兄弟的方法 > $(this).siblings() <br>
+        //獲取後代的所有div的方法 > $(this).find("div")
+    </u>
+    <br><br>
+    <div id="box3">
+        <div><img src="./img/01.jpg" alt=""></div>
+        <div><img src="./img/02.jpg" alt=""></div>
+        <div><img src="./img/03.jpg" alt=""></div>
+        <div><img src="./img/04.jpg" alt=""></div>
+        <div><img src="./img/05.jpg" alt=""></div>
+        <div><img src="./img/06.jpg" alt=""></div>
+    </div>
+
+    <script>
+        $(function () {
+            $('#box3>div').mouseenter(function () {
+                $(this).css('opacity', '100%').siblings().css('opacity', '30%')
+            })
+            $('#box3').mouseleave(function () {
+                $(this).find('div').css('opacity', '100%')
+            })
+        })
+    </script>
+
+    <h3>篩選選擇器案例：手風琴</h3>
+    點擊當前span讓div往下彈出 然後其他div往上收<br><br>
+    <u>//獲取下一個兄弟元素 > $(this).next() <br>
+        //獲取父元素 > $(this).parent()
+    </u>
+    <div id="box4">
+        <ul>
+            <li>
+                <span class="title">標題1</span>
+                <div>我是我是彈出來的div1</div>
+            </li>
+            <li>
+                <span class="title">標題2</span>
+                <div>我是我是彈出來的div2</div>
+            </li>
+            <li>
+                <span class="title">標題3</span>
+                <div>我是我是彈出來的div3</div>
+            </li>
+            <li>
+                <span class="title">標題4</span>
+                <div>我是我是彈出來的div4</div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            $('.title').click(function () {
+                $(this).next().slideDown().parent().siblings().children('div').slideUp()
+            })
+        })
+    </script>
+
+    <h3>篩選選擇器案例：淘寶</h3>
+    鼠標移入哪個li就讓對應的圖片顯示<br><br>
+    <u>//獲取某下標元素 > $(this).eq(index) <br>
+        //獲取當前元素在所有兄弟元素中的下標 > $(this).index()</u><br><br>
+
+    <div class="wrapper">
+
+        <ul id="left">
+            <li><a href="#">女靴</a></li>
+            <li><a href="#">雪地靴</a></li>
+            <li><a href="#">連衣裙</a></li>
+            <li><a href="#">呢大衣</a></li>
+            <li><a href="#">毛衣</a></li>
+            <li><a href="#">鉛筆裤</a></li>
+            <li><a href="#">羽绒服</a></li>
+            <li><a href="#">牛仔裤</a></li>
+            <li><a href="#">女包</a></li>
+        </ul>
+
+        <ul id="center">
+            <li><a href="#"><img src="./img/女靴.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/雪地靴.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/連衣裙.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/呢大衣.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/毛衣.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/鉛筆裤.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/羽绒服.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/牛仔裤.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/女包.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/男靴.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/皮带.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/围巾.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/皮衣.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/男毛衣.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./img/男棉服.jpg" width="200" height="250" /></a></li>
+        </ul>
+
+        <ul id="right">
+            <li><a href="#">男靴</a></li>
+            <li><a href="#">皮带</a></li>
+            <li><a href="#">围巾</a></li>
+            <li><a href="#">皮衣</a></li>
+            <li><a href="#">男毛衣</a></li>
+            <li><a href="#">男棉服</a></li>
+        </ul>
+
+    </div>
+
+    <script>
+        $(function () {
+            $('#left>li').mouseenter(function () {
+                var i = $(this).index()
+                $('#center>li').hide().eq(i).show()
+                $(this).css('background-color', 'firebrick').siblings().css('background-color',
+                    'black')
+                $('#right>li').css('background-color', 'black')
+            })
+            $('#right>li').mouseenter(function () {
+                var i = $(this).index() + 9
+                $('#center>li').hide().eq(i).show()
+                $(this).css('background-color', 'firebrick').siblings().css('background-color',
+                    'black')
+                $('#left>li').css('background-color', 'black')
+            })
+        })
+    </script>
+
+    <h3>統整JQuery中大部分常用的選擇器</h3>
+    <u>//基本選擇器</u>
+    <p style="width: 130px;">
+        tag > $('div') <br> className > $('.active') <br>id > $('#box') <br>交集 > $('li.active') <br> 並集 > $('#box1#box2')
+    </p>
+    <u>//層級選擇器</u>
+    <p style="width: 130px;">
+        子代 > $('ul>li') <br> 後代 > $('#box li')
+    </p>
+    <u>//過濾選擇器</u>
+    <p style="width: 130px;">
+        :odd下標奇數<br>:even下標偶數<br>:eq下標本身<br>:first下標第一個<br>:last下標最後一個<br>:gt大於下標<br>:lt小於下標
+    </p>
+    <u>//篩選選擇器</u>
+    <p style="width: 130px;">
+        children()子元素<br>parent()父元素<br>siblings()兄弟元素<br>find()後代元素<br>next()下一個兄弟<br>prev()上一個兄弟<br>eq()下標元素
+    </p>
+
+</body>
+
+</html>
